@@ -1,6 +1,7 @@
 package yazdaniscodelab.sqlitegrocerycompleteapp.UI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import yazdaniscodelab.sqlitegrocerycompleteapp.DetailsActivity;
 import yazdaniscodelab.sqlitegrocerycompleteapp.Model.Grocery;
 import yazdaniscodelab.sqlitegrocerycompleteapp.R;
 
@@ -80,6 +82,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    int position=getAdapterPosition();
+
+                    Grocery grocery=groceryList.get(position);
+
+                    Intent intent=new Intent(context, DetailsActivity.class);
+
+                    intent.putExtra("name",grocery.getName());
+                    intent.putExtra("qty",grocery.getQuentity());
+                    intent.putExtra("date",grocery.getDateItemAdded());
+                    intent.putExtra("id",grocery.getId());
+
+                    context.startActivity(intent);
 
                 }
             });

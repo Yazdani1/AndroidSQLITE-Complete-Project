@@ -103,7 +103,7 @@ public class DatabaseHandaler extends SQLiteOpenHelper{
         List<Grocery>groceryList=new ArrayList<>();
 
         Cursor cursor=db.query(Constants.TABLE_NAME,new String[]{Constants.KEY_ID,
-        Constants.KEY_GROCERY_ITEM,Constants.KEY_QTY_NUMBER,Constants.KEY_DATE_NAME},null,null,null,null,Constants.KEY_DATE_NAME + "DESC");
+        Constants.KEY_GROCERY_ITEM,Constants.KEY_QTY_NUMBER,Constants.KEY_DATE_NAME},null,null,null,null,Constants.KEY_DATE_NAME + " DESC");
 
         if (cursor.moveToFirst()){
             do {

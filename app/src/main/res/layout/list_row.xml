@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        app:cardElevation="10dp"
+        android:elevation="10dp"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:text="Quentity Name:"
+                android:id="@+id/name"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:text="Quentity"
+                android:id="@+id/qty"
+                android:layout_below="@id/name"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:text="Quentity"
+                android:id="@+id/date"
+                android:paddingTop="6dp"
+                android:textStyle="italic"
+                android:layout_below="@id/qty"
+                />
+
+            <TableRow
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                >
+                <Button
+                    android:layout_width="30dp"
+                    android:backgroundTint="@android:color/black"
+                    android:layout_height="30dp"
+                    android:id="@+id/edit"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/edit"
+                    />
+                <Button
+                    android:layout_width="30dp"
+                    android:backgroundTint="@android:color/black"
+                    android:layout_height="30dp"
+                    android:id="@+id/deete"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/delete"
+                    />
+
+            </TableRow>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

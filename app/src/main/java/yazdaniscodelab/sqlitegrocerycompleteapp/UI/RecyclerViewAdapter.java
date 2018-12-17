@@ -139,12 +139,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                     DatabaseHandaler db=new DatabaseHandaler(context);
 
-                    grocery.setName(item.getText().toString());
-                    grocery.setQuentity(mquentity.getText().toString());
+                    String nameGrocery=item.getText().toString();
+                    String nameQuentity=mquentity.getText().toString();
+
+                    grocery.setName(nameGrocery);
+                    grocery.setQuentity(nameQuentity);
+
 
                     if (!item.getText().toString().isEmpty() && !mquentity.getText().toString().isEmpty()){
                         db.updateGrocery(grocery);
                         notifyItemChanged(getAdapterPosition(),grocery);
+                        dialog.dismiss();
                     }
                 }
             });
@@ -175,25 +180,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             btnYes.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     DatabaseHandaler db=new DatabaseHandaler(context);
-
                     db.deleteGrocery(id);
                     groceryList.remove(getAdapterPosition());
                     notifyItemRemoved(getAdapterPosition());
-
                     dialog.dismiss();
                 }
             });
-
-
-
             dialog.show();
-
-
-
         }
-
     }
 
 

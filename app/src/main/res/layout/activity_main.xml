@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context="yazdaniscodelab.sqlitegrocerycompleteapp.MainActivity">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimary"
+        android:text="Show All List"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:id="@+id/all_data_show"
+        />
+
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

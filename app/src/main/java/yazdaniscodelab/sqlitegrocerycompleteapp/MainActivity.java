@@ -25,10 +25,21 @@ public class MainActivity extends AppCompatActivity {
     private EditText mquentity;
     private Button btnsave;
 
+    private Button btnShow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnShow=findViewById(R.id.all_data_show);
+
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),ListViewActivity.class));
+            }
+        });
 
         db=new DatabaseHandaler(this);
 

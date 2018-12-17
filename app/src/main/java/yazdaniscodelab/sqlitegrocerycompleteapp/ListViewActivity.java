@@ -37,21 +37,17 @@ public class ListViewActivity extends AppCompatActivity {
         groceryList=db.getAllGrocery();
 
         for (Grocery c:groceryList){
-
             Grocery grocery=new Grocery();
-
             grocery.setName(c.getName());
             grocery.setQuentity(c.getQuentity());
             grocery.setId(c.getId());
             grocery.setDateItemAdded(c.getDateItemAdded());
-
             listofitems.add(grocery);
         }
 
         recyclerViewAdapter=new RecyclerViewAdapter(this,listofitems);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
-
 
     }
 }

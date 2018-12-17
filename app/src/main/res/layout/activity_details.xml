@@ -26,24 +26,22 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="@android:color/holo_red_dark"
-            android:id="@+id/date_dts"
-            android:text="dATE"
-            android:padding="15dp"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/holo_red_dark"
             android:id="@+id/quntity_dts"
             android:padding="15dp"
             android:text="Da"
             />
-
-
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@android:color/holo_red_dark"
+            android:id="@+id/date_dts"
+            android:text="dATE"
+            android:padding="15dp"
+            />
 
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 package yazdaniscodelab.sqlitegrocerycompleteapp.UI;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -7,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
 
+import yazdaniscodelab.sqlitegrocerycompleteapp.Data.DatabaseHandaler;
 import yazdaniscodelab.sqlitegrocerycompleteapp.DetailsActivity;
 import yazdaniscodelab.sqlitegrocerycompleteapp.Model.Grocery;
 import yazdaniscodelab.sqlitegrocerycompleteapp.R;
@@ -104,12 +107,93 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.edit:
+                    int position=getAdapterPosition();
+                    Grocery grocery=groceryList.get(position);
+                    editItem(grocery);
                     break;
                 case R.id.deete:
-
+                    int mposition=getAdapterPosition();
+                    Grocery mgrocery=groceryList.get(mposition);
+                    deleteData(mgrocery.getId());
                     break;
             }
         }
+
+        public void editItem(final Grocery grocery){
+
+            AlertDialog.Builder mydialog=new AlertDialog.Builder(context);
+            LayoutInflater inflater=LayoutInflater.from(context);
+
+            View mView=inflater.inflate(R.layout.item,null);
+            mydialog.setView(mView);
+
+            final EditText item=mView.findViewById(R.id.item);
+            final EditText mquentity=mView.findViewById(R.id.quantity);
+            Button btnsave=mView.findViewById(R.id.btnsave);
+
+            final AlertDialog dialog=mydialog.create();
+
+            btnsave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    DatabaseHandaler db=new DatabaseHandaler(context);
+
+                    grocery.setName(item.getText().toString());
+                    grocery.setQuentity(mquentity.getText().toString());
+
+                    if (!item.getText().toString().isEmpty() && !mquentity.getText().toString().isEmpty()){
+                        db.updateGrocery(grocery);
+                        notifyItemChanged(getAdapterPosition(),grocery);
+                    }
+                }
+            });
+            dialog.show();
+
+        }
+
+        public void deleteData(final int id){
+
+            AlertDialog.Builder mydialog=new AlertDialog.Builder(context);
+            LayoutInflater inflater=LayoutInflater.from(context);
+
+            View mView=inflater.inflate(R.layout.confirmdialog,null);
+            mydialog.setView(mView);
+
+            final AlertDialog dialog=mydialog.create();
+
+            Button btnNo=mView.findViewById(R.id.no);
+            Button btnYes=mView.findViewById(R.id.yes);
+
+            btnNo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+
+            btnYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    DatabaseHandaler db=new DatabaseHandaler(context);
+
+                    db.deleteGrocery(id);
+                    groceryList.remove(getAdapterPosition());
+                    notifyItemRemoved(getAdapterPosition());
+
+                    dialog.dismiss();
+                }
+            });
+
+
+
+            dialog.show();
+
+
+
+        }
+
     }
 
 

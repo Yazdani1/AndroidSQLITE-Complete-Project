@@ -12,7 +12,7 @@ public class Constants {
 
     //Table collums
 
-    public static final String KEY_ID="1";
+    public static final String KEY_ID="id";
     public static final String KEY_GROCERY_ITEM="grocery_item";
     public static final String KEY_QTY_NUMBER="quentity_name";
     public static final String KEY_DATE_NAME="date_added";
